@@ -1,5 +1,5 @@
 <?php
-namespace Photogabble\LaravelRegistrationValidator\Tests;
+namespace Niflheim\LaravelRegistrationValidator\Tests;
 
 class ConfusableStringValidationTest extends ValidationBase
 {

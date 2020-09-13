@@ -1,6 +1,9 @@
 <?php
-namespace Photogabble\LaravelRegistrationValidator;
 
+namespace Niflheim\LaravelRegistrationValidator;
+
+use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Validator;
 use Photogabble\ConfusableHomoglyphs\Categories;
 use Photogabble\ConfusableHomoglyphs\Confusable;
@@ -26,12 +29,12 @@ class Validators
         }
 
         // Value must not be RFC 5785 ident.
-        if (starts_with($value, '.well-known')){
+        if (Str::startsWith($value, '.well-known')) {
             return false;
         }
 
         $reserved = [];
-        array_map(function($value) use (&$reserved) {
+        array_map(function ($value) use (&$reserved) {
             $reserved = array_merge($reserved, $value);
         }, config('registration-validation.reserved_list', []));
 
@@ -49,7 +52,7 @@ class Validators
      * @param string $value
      * @param array $parameters
      * @param Validator $validator
-     * @throws \Exception
+     * @throws Exception
      *
      * @return bool
      */
@@ -69,13 +72,13 @@ class Validators
      * @param string $value
      * @param array $parameters
      * @param Validator $validator
-     * @throws \Exception
+     * @throws Exception
      *
      * @return bool
      */
     public function validateConfusableEmail($attribute, $value, array $parameters, Validator $validator)
     {
-        if (! stristr($value, '@')){
+        if (!stristr($value, '@')) {
             return false;
         }
 

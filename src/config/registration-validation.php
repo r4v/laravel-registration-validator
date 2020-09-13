@@ -26,6 +26,8 @@
         // Common protocol hostnames.
         'protocol_hostnames' => [
             'ftp',
+            'ftps',
+            'sftp',
             'imap',
             'mail',
             'news',

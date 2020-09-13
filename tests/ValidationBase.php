@@ -1,13 +1,15 @@
 <?php
-namespace Photogabble\LaravelRegistrationValidator\Tests;
 
+namespace Niflheim\LaravelRegistrationValidator\Tests;
+
+use Illuminate\Validation\Factory;
+use Niflheim\LaravelRegistrationValidator\ServiceProvider;
 use Orchestra\Testbench\TestCase;
-use Photogabble\LaravelRegistrationValidator\ServiceProvider;
 
 class ValidationBase extends TestCase
 {
     /**
-     * @var \Illuminate\Validation\Factory
+     * @var Factory
      */
     protected $validator;
 
@@ -16,7 +18,7 @@ class ValidationBase extends TestCase
         return [ServiceProvider::class];
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->validator = $this->app->make('validator');
